@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">CUCEI IA</string>
+    <string name="menu_titulo1">CUCEI</string>
+    <string name="menu_titulo2">IA</string>
+    <string name="menu_button1">Iniciar sesión</string>
+    <string name="menu_pregunta">¿No tienes cuenta?</string>
+    <string name="menu_button2">Regístrate.</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="msj_inisesion_1">Iniciar sesion</string>
+    <string name="msj_inisesion_2">Ingresa tu correo y contraseña</string>
+    <string name="msj_inisesion_3">Correo institucional</string>
+    <string name="msj_inisesion_4">Contraseña </string>
+    <string name="msj_inisesion_5">Ingresa tu correo y contraseña</string>
+    <string name="msj_inisesion_6">Continuar</string>
+    <string name="msj_inisesion_7">¿Olvidaste tu contraseña?</string>
+
+    <!-- Agrega estas líneas si no están -->
+    <string name="next">Siguiente</string>
+    <string name="previous">Anterior</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="first_fragment_label">Primer Fragmento</string>
+    <string name="second_fragment_label">Segundo Fragmento</string>
+
+    <!-- lineas de crear cuentas  -->
+    <string name="msj_crearcuenta_1">Crear una cuenta</string>
+    <string name="msj_crearcuenta_2">Ingresa tu correo y contraseña</string>
+    <string name="msj_crearcuenta_3">Nombre de usuario</string>
+    <string name="msj_crearcuenta_4">Correo institucional </string>
+    <string name="msj_crearcuenta_5">Contraseña</string>
+    <string name="msj_crearcuenta_6">Registrarme</string>
+    <string name="msj_crearcuenta_7">Al hacer clic en Registrarme, aceptas nuestros</string>
+    <string name="msj_crearcuenta_8">Términos</string>
+    <string name="msj_crearcuenta_81">de Servicio</string>
+    <string name="msj_crearcuenta_9">y la</string>
+    <string name="msj_crearcuenta_10">Politica de privacidad.</string>
+
+    <!-- lineas de recuperar contrase;-->
+    <string name="msj_reccontra_1">Recuperar contraseña</string>
+    <string name="msj_reccontra_2">Ingresa tu correo</string>
+    <string name="msj_reccontra_3">Enviar correo de recuperacion</string>
+    <string name="msj_reccontra_4">Volver a la pestaña anterior</string>
+
+
+</resources>

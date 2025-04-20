@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#BFBDB8</color>        <!-- Color principal -->
+    <color name="primary_dark">#121212</color>   <!-- Color para la status bar -->
+    <color name="accent">#FF6D00</color>         <!-- Nuevo color de acento -->
+    <color name="surface">#403F3E</color>        <!-- Color de fondo -->
+    <color name="on_primary">#FFFFFF</color>     <!-- Color de texto sobre primary -->
+</resources>
