@@ -7,4 +7,5 @@
     <color name="accent">#FF6D00</color>         <!-- Nuevo color de acento -->
     <color name="surface">#403F3E</color>        <!-- Color de fondo -->
     <color name="on_primary">#FFFFFF</color>     <!-- Color de texto sobre primary -->
+    <color name="bluedeep">#111C54</color>
 </resources>

@@ -45,4 +45,22 @@
     <string name="msj_reccontra_4">Volver a la pestaña anterior</string>
 
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="menu_home">Mi Perfil</string>
+    <string name="menu_gallery">Mis Profesores y Opiniones</string>
+    <string name="menu_slideshow">Soporte</string>
+    <string name="menu_configuracion">Configuracion</string>
+    <string name="menu_acercade">Acerca de</string>
+    <string name="inicio_app_buscador">Buscar</string>
+    <string name="inicio_app_recomendados">Recomendados para ti</string>
+    <string name="inicio_app_mejor_valorados">Mejor valorados</string>
+    <string name="title_activity_main3">MainActivity3</string>
+    <string name="title_menu">Menu</string>
+
+
 </resources>
