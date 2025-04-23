@@ -96,8 +96,8 @@
                 android:text="@string/msj_inisesion_3"
                 android:textColor="#121010"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
-                app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress" />
+                app:layout_constraintBottom_toTopOf="@+id/correoLogin"
+                app:layout_constraintStart_toStartOf="@+id/correoLogin" />
 
             <TextView
                 android:id="@+id/textView12"
@@ -106,11 +106,11 @@
                 android:text="@string/msj_inisesion_4"
                 android:textColor="#0B0B0B"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress3"
-                app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress3" />
+                app:layout_constraintBottom_toTopOf="@+id/contrasenaLogin"
+                app:layout_constraintStart_toStartOf="@+id/contrasenaLogin" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/correoLogin"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="50dp"
@@ -127,47 +127,73 @@
                 app:layout_constraintWidth_percent="0.9" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress3"
+                android:id="@+id/contrasenaLogin"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/barras_inisesion"
                 android:ems="10"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+                app:layout_constraintTop_toBottomOf="@+id/correoLogin"
                 app:layout_constraintWidth_percent="0.9" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonLogin"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
+                android:forceHasOverlappingRendering="false"
                 android:text="@string/msj_inisesion_6"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
+                app:layout_constraintTop_toBottomOf="@+id/contrasenaLogin"
                 app:layout_constraintWidth_percent="0.9" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/ovidastecontra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:text="@string/msj_inisesion_7"
                 android:textColor="#00BCD4"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button2" />
+                app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+            <TextView
+                android:id="@+id/textnotienes3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:clickable="true"
+                android:text="@string/menu_pregunta"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ovidastecontra" />
+
+            <TextView
+                android:id="@+id/registrateinic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:text="@string/menu_button2"
+                android:textColor="#00BCD4"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textnotienes3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

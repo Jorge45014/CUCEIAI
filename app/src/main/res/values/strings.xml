@@ -16,6 +16,7 @@
     <string name="msj_inisesion_4">Contraseña </string>
     <string name="msj_inisesion_5">Ingresa tu correo y contraseña</string>
     <string name="msj_inisesion_6">Continuar</string>
+    <string name="msj_inisesion_8">Continuar con Google</string>
     <string name="msj_inisesion_7">¿Olvidaste tu contraseña?</string>
 
     <!-- Agrega estas líneas si no están -->
@@ -62,5 +63,7 @@
     <string name="title_activity_main3">MainActivity3</string>
     <string name="title_menu">Menu</string>
 
+    <string name="textacercade">Esta aplicación permite a los estudiantes compartir y consultar reseñas sobre profesores de diversas instituciones académicas. Nuestro objetivo es brindar una plataforma transparente y confiable para ayudar a los alumnos a tomar mejores decisiones sobre sus clases.</string>
+    <string name="ubiacercade">Blvd. Marcelino García Barragán #1421, esq Calzada</string>
 
 </resources>

@@ -63,11 +63,11 @@
             android:text="@string/msj_inisesion_3"
             android:textColor="#0B0B0B"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress3"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress3" />
+            app:layout_constraintBottom_toTopOf="@+id/contrasenaLogin"
+            app:layout_constraintStart_toStartOf="@+id/contrasenaLogin" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress3"
+            android:id="@+id/contrasenaLogin"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="40dp"
@@ -98,7 +98,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
+            app:layout_constraintTop_toBottomOf="@+id/contrasenaLogin"
             app:layout_constraintWidth_percent="0.9" />
 
         <TextView
@@ -111,21 +111,8 @@
             app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress7"
             app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress7" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/msj_inisesion_6"
-            app:cornerRadius="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress7"
-            app:layout_constraintWidth_percent="0.9" />
-
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/ovidastecontra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -135,7 +122,7 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonCrear" />
 
         <TextView
             android:id="@+id/textView33"
@@ -157,8 +144,8 @@
             android:text="@string/msj_crearcuenta_8"
             android:textColor="#02CCE6"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toTopOf="@+id/textView13" />
+            app:layout_constraintStart_toEndOf="@+id/ovidastecontra"
+            app:layout_constraintTop_toTopOf="@+id/ovidastecontra" />
 
         <TextView
             android:id="@+id/textView32"
@@ -171,7 +158,7 @@
             android:translationX="-75dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintTop_toBottomOf="@+id/ovidastecontra" />
 
         <TextView
             android:id="@+id/textView34"
@@ -191,10 +178,24 @@
             android:layout_height="0dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/barras_inisesion"
+            android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintWidth_percent="0.9" />
+
+        <Button
+            android:id="@+id/buttonCrear"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/msj_inisesion_6"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.09"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress7"
             app:layout_constraintWidth_percent="0.9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

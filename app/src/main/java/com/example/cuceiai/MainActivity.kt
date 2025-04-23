@@ -11,9 +11,11 @@ import android.widget.TextView
 import androidx.lifecycle.findViewTreeViewModelStoreOwner
 
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var button_ini_sesion_principal: Button
-    private lateinit var Registrarse: TextView
+
+    private lateinit var Accesomn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,16 +27,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,iniciar_sesion::class.java)
             startActivity(intent)
         }
-        Registrarse = findViewById(R.id.textView4)
-        Registrarse.setOnClickListener {
-            val intent = Intent(this,crear_cuenta::class.java)
-            startActivity(intent)
-        }
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        Accesomn = findViewById(R.id.Acesomn)
+        Accesomn.setOnClickListener {
+            val intent = Intent(this, Main3Activity::class.java)
+            startActivity(intent)
         }
     }
 }

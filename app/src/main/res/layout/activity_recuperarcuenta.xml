@@ -51,11 +51,11 @@
             android:text="@string/msj_inisesion_3"
             android:textColor="#121010"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
-            app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress" />
+            app:layout_constraintBottom_toTopOf="@+id/correoLogin"
+            app:layout_constraintStart_toStartOf="@+id/correoLogin" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/correoLogin"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="60dp"
@@ -72,7 +72,7 @@
             app:layout_constraintWidth_percent="0.9" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/buttonLogin"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
@@ -81,7 +81,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/correoLogin"
             app:layout_constraintWidth_percent="0.9" />
 
         <TextView
@@ -94,7 +94,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button2" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

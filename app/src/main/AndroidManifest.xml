@@ -14,7 +14,10 @@
         android:theme="@style/Theme.CUCEIAI"
         tools:targetApi="31">
         <activity
-            android:name=".Inicio"
+            android:name=".activity_acercade"
+            android:exported="false" />
+        <activity
+            android:name=".SoporteActivity"
             android:exported="false" />
         <activity
             android:name=".Recuperarcuenta"
@@ -34,7 +37,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Agregar Main3Activity -->
+        <activity
+            android:name=".Main3Activity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "612981322536",
-    "project_id": "cuceiia",
-    "storage_bucket": "cuceiia.firebasestorage.app"
+    "project_number": "1001481265213",
+    "project_id": "cuceiia-78e62",
+    "storage_bucket": "cuceiia-78e62.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:612981322536:android:a25c67411730e71ccd561d",
+        "mobilesdk_app_id": "1:1001481265213:android:33720679bfb86c1b164a54",
         "android_client_info": {
           "package_name": "com.example.cuceiai"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCWGbPIV2tpxOfZXDsyUL62Sl5Ga7OpJ6g"
+          "current_key": "AIzaSyAMkIaihKcHm0-FPf6RtCz6Ymy8pxqPC0c"
         }
       ],
       "services": {
