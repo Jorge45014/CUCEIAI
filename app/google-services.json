@@ -12,7 +12,20 @@
           "package_name": "com.example.cuceiai"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1001481265213-45k6tlik542j6m6aucu62ebv1rith0qp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cuceiai",
+            "certificate_hash": "3ac147d116c27142d8be0c2df23abfa6d923822d"
+          }
+        },
+        {
+          "client_id": "1001481265213-lliklel77cgc03ltn6lbdlohpkq640a7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAMkIaihKcHm0-FPf6RtCz6Ymy8pxqPC0c"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1001481265213-lliklel77cgc03ltn6lbdlohpkq640a7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

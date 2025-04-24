@@ -2,6 +2,8 @@ package com.example.cuceiai
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Menu
 import android.widget.ImageButton
 import android.widget.Toast
@@ -19,9 +21,19 @@ import com.example.cuceiai.databinding.ActivityAcercadeBinding
 import com.example.cuceiai.databinding.ActivityMain3Binding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import android.view.KeyEvent
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.AutoCompleteTextView
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.HorizontalScrollView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 enum class ProviderType{
-    BASIC
+    BASIC,
+    GOOGLE
 }
 
 class Main3Activity : AppCompatActivity() {
@@ -30,19 +42,23 @@ class Main3Activity : AppCompatActivity() {
     private lateinit var binding: ActivityMain3Binding
     private lateinit var buttonMenu: ImageButton
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: ResultadoAdapter
+    private lateinit var listaCompleta: List<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMain3Binding.inflate(layoutInflater)
         setContentView(binding.root)
+        recyclerView = findViewById(R.id.recyclerViewResultados)
+        recyclerView.visibility = View.GONE
 
         setSupportActionBar(binding.appBarMain3.toolbar)
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_main3)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
@@ -68,7 +84,6 @@ class Main3Activity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                // Aquí puedes manejar otros ítems si es necesario
                 else -> false
             }
         }
@@ -86,20 +101,15 @@ class Main3Activity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_favorites -> {
-                    // Acción para Profesores
                     Toast.makeText(this, "Profesores seleccionados", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.nav_history -> {
-                    // Acción para Notificaciones
                     Toast.makeText(this, "Notificaciones seleccionadas", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.nav_profile -> {
-                    // Acción para Perfil
                     FirebaseAuth.getInstance().signOut()
-
-                    // Ir a la pantalla de inicio de sesión y limpiar el historial
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
@@ -109,13 +119,44 @@ class Main3Activity : AppCompatActivity() {
             }
         }
 
-
         //setup
         setup()
+
+        configurarBuscador()
+
+        // Barra de búsqueda
+        val buscador = findViewById<EditText>(R.id.autoCompleteTextView)
+        recyclerView = findViewById(R.id.recyclerViewResultados)
+
+        // Lista simulada (aquí pondrías los datos de tu base de datos)
+        listaCompleta = listOf("Computadora", "Celular", "Tablet", "Teclado", "Mouse", "Pantalla", "Router", "Impresora")
+
+        adapter = ResultadoAdapter(listaCompleta)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
+
+        buscador.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val texto = s.toString()
+                val resultadosFiltrados = listaCompleta.filter {
+                    it.contains(texto, ignoreCase = true)
+                }
+
+                if (texto.isNotEmpty()) {
+                    recyclerView.visibility = View.VISIBLE
+                } else {
+                    recyclerView.visibility = View.GONE
+                }
+
+                adapter.actualizarLista(resultadosFiltrados)
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main3, menu)
         return true
     }
@@ -127,9 +168,71 @@ class Main3Activity : AppCompatActivity() {
 
     private fun setup(){
         title = "Inicio"
+    }
 
+    private fun configurarBuscador() {
+        val buscador = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
+        val textView8 = findViewById<TextView>(R.id.textView8)
+        val textView9 = findViewById<TextView>(R.id.textView9)
+        val scrollView1 = findViewById<HorizontalScrollView>(R.id.horizontalScrollView)
+        val scrollView2 = findViewById<HorizontalScrollView>(R.id.horizontalScrollView2)
 
+        // Este bloque se ejecutará cuando empiecen a escribir
+        buscador.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val texto = s.toString()
 
+                // Si hay texto, ocultar las vistas
+                if (texto.isNotEmpty()) {
+                    textView8.visibility = View.GONE
+                    textView9.visibility = View.GONE
+                    scrollView1.visibility = View.GONE
+                    scrollView2.visibility = View.GONE
+                } else {
+                    // Si no hay texto, mostrar las vistas
+                    textView8.visibility = View.VISIBLE
+                    textView9.visibility = View.VISIBLE
+                    scrollView1.visibility = View.VISIBLE
+                    scrollView2.visibility = View.VISIBLE
+                }
+            }
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        // También manejamos el evento de búsqueda con el botón
+        buscador.setOnEditorActionListener { _, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                actionId == EditorInfo.IME_ACTION_DONE ||
+                (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
+
+                val texto = buscador.text.toString().trim()
+
+                if (texto.isNotEmpty()) {
+                    realizarBusqueda(texto)
+
+                    // Ocultar vistas después de buscar
+                    textView8.visibility = View.GONE
+                    textView9.visibility = View.GONE
+                    scrollView1.visibility = View.GONE
+                    scrollView2.visibility = View.GONE
+                } else {
+                    // Mostrar vistas si no hay texto
+                    textView8.visibility = View.VISIBLE
+                    textView9.visibility = View.VISIBLE
+                    scrollView1.visibility = View.VISIBLE
+                    scrollView2.visibility = View.VISIBLE
+                }
+
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun realizarBusqueda(texto: String) {
+        Toast.makeText(this, "Buscando: $texto", Toast.LENGTH_SHORT).show()
     }
 }

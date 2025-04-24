@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 import android.content.Intent
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 
@@ -62,8 +63,11 @@ class crear_cuenta : AppCompatActivity() {
                                 // No se guarda la contraseña por seguridad
                             )
 
-                            db.collection("users").document(correoTexto).set(datosUsuario)
-                                .addOnSuccessListener {
+                            db.collection("users")
+                                .add(datosUsuario)  // Se agrega el nuevo usuario
+                                .addOnSuccessListener { docRef ->
+                                    // Cuando el usuario se agrega exitosamente, mostramos el ID generado automáticamente
+                                    Log.d("Firestore", "Usuario creado con ID: ${docRef.id}")
                                     Toast.makeText(this, "Cuenta creada con éxito", Toast.LENGTH_SHORT).show()
 
                                     // Iniciar sesión automáticamente
