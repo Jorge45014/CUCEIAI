@@ -2,21 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_home"
-        android:icon="@drawable/bxs__home"
-        android:title="Inicio" />
+        android:icon="@drawable/bxs__calendar"
+        android:title="Este mes" />
 
     <item
-        android:id="@+id/nav_favorites"
-        android:icon="@drawable/streamline__class_lesson_solid"
-        android:title="Profesores" />
-
-    <item
-        android:id="@+id/nav_history"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="Notificaciones" />
-
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@drawable/material_symbols__person_rounded"
-        android:title="Perfil" />
+        android:id="@+id/statistics"
+        android:icon="@drawable/uil__statistics"
+        android:title="Proximo mes" />
 </menu>

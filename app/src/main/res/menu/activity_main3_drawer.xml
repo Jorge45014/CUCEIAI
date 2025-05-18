@@ -10,10 +10,6 @@
             android:icon="@drawable/material_symbols__person_rounded"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/fa6_solid__user_tie"
-            android:title="@string/menu_gallery" />
-        <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/fa_solid__hands_helping"
             android:title="@string/menu_slideshow" />

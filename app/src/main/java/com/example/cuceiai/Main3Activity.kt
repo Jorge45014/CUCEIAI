@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.Menu
 import android.widget.ImageButton
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -18,10 +17,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import com.example.cuceiai.databinding.ActivityAcercadeBinding
 import com.example.cuceiai.databinding.ActivityMain3Binding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -32,6 +29,7 @@ import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlin.jvm.java
 
 enum class ProviderType{
     BASIC,
@@ -63,7 +61,7 @@ class Main3Activity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main3)
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_slideshow
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -102,12 +100,11 @@ class Main3Activity : AppCompatActivity() {
                     }
                     true
                 }
-                R.id.nav_favorites -> {
-                    Toast.makeText(this, "Profesores seleccionados", Toast.LENGTH_SHORT).show()
+                R.id.statistics -> {
                     true
                 }
+                /*
                 R.id.nav_history -> {
-                    Toast.makeText(this, "Notificaciones seleccionadas", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.nav_profile -> {
@@ -116,7 +113,7 @@ class Main3Activity : AppCompatActivity() {
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     true
-                }
+                }*/
                 else -> false
             }
         }
@@ -192,9 +189,9 @@ class Main3Activity : AppCompatActivity() {
 
     private fun configurarBuscador() {
         val buscador = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
-        val textView8 = findViewById<TextView>(R.id.textView8)
+        val textView8 = findViewById<TextView>(R.id.textView8e)
         val textView9 = findViewById<TextView>(R.id.textView9)
-        val scrollView1 = findViewById<HorizontalScrollView>(R.id.horizontalScrollView)
+        val scrollView1 = findViewById<HorizontalScrollView>(R.id.horizontalScrollView2)
         val scrollView2 = findViewById<HorizontalScrollView>(R.id.horizontalScrollView2)
 
         // Este bloque se ejecutará cuando empiecen a escribir

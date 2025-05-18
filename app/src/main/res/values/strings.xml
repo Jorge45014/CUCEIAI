@@ -58,7 +58,7 @@
     <string name="menu_configuracion">Configuracion</string>
     <string name="menu_acercade">Acerca de</string>
     <string name="inicio_app_buscador">Buscar</string>
-    <string name="inicio_app_recomendados">Recomendados para ti</string>
+    <string name="inicio_app_recomendados">Precios de este mes</string>
     <string name="inicio_app_mejor_valorados">Mejor valorados</string>
     <string name="title_activity_main3">MainActivity3</string>
     <string name="title_menu">Menu</string>
