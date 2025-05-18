@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/material_symbols__person_rounded"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/fa6_solid__user_tie"
+            android:title="@string/menu_gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/fa_solid__hands_helping"
+            android:title="@string/menu_slideshow" />
+
+        <item
+            android:id="@+id/nav_configuracion"
+            android:icon="@drawable/material_symbols__settings"
+            android:title="@string/menu_configuracion" />
+
+        <item
+            android:id="@+id/nav_acerca_de"
+            android:icon="@drawable/fluent__people_team_16_filled"
+            android:title="@string/menu_acercade" />
+    </group>
+
+
+</menu>

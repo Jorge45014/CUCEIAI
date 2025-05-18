@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             setup()
-            agregarNuevoProfesor()
+
 
         }
 
