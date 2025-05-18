@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.widget.ImageButton
 import android.widget.Toast
@@ -30,6 +31,7 @@ import android.widget.TextView
 import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FirebaseFirestore
 
 enum class ProviderType{
     BASIC,
@@ -44,7 +46,7 @@ class Main3Activity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ResultadoAdapter
-    private lateinit var listaCompleta: List<String>
+    private lateinit var listaCompleta: List<Profesor>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -121,15 +123,31 @@ class Main3Activity : AppCompatActivity() {
 
         //setup
         setup()
-
         configurarBuscador()
 
         // Barra de búsqueda
         val buscador = findViewById<EditText>(R.id.autoCompleteTextView)
         recyclerView = findViewById(R.id.recyclerViewResultados)
 
-        // Lista simulada (aquí pondrías los datos de tu base de datos)
-        listaCompleta = listOf("Computadora", "Celular", "Tablet", "Teclado", "Mouse", "Pantalla", "Router", "Impresora")
+        // Lista simulada (aquí pondrías los datos de tu base de datos) /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        val db = FirebaseFirestore.getInstance()
+        val listaCompleta = mutableListOf<Profesor>()
+
+        db.collection("profesores")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val profesor = document.toObject(Profesor::class.java)
+                    listaCompleta.add(profesor)
+                }
+
+                // Aquí ya tienes listaCompleta cargada
+                println("Profesores obtenidos: $listaCompleta")
+            }
+            .addOnFailureListener { exception ->
+                Log.w("Firestore", "Error al obtener documentos.", exception)
+            }
 
         adapter = ResultadoAdapter(listaCompleta)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -137,9 +155,10 @@ class Main3Activity : AppCompatActivity() {
 
         buscador.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                val texto = s.toString()
+                val texto = s.toString().trim()
                 val resultadosFiltrados = listaCompleta.filter {
-                    it.contains(texto, ignoreCase = true)
+                    it.nombre.contains(texto, ignoreCase = true) ||
+                            it.especialidad.contains(texto, ignoreCase = true)
                 }
 
                 if (texto.isNotEmpty()) {
@@ -156,6 +175,7 @@ class Main3Activity : AppCompatActivity() {
         })
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////ds/////////////////////////////////////////////////////////////////////////////////////////////////
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main3, menu)
         return true
@@ -235,4 +255,5 @@ class Main3Activity : AppCompatActivity() {
     private fun realizarBusqueda(texto: String) {
         Toast.makeText(this, "Buscando: $texto", Toast.LENGTH_SHORT).show()
     }
+
 }

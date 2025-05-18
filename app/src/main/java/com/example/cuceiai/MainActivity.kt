@@ -143,7 +143,6 @@ class MainActivity : AppCompatActivity() {
         val nuevoProfesor = hashMapOf(
             "nombre" to "Ana Martínez",
             "especialidad" to "Matemáticas",
-            "universidad" to "UNAM",
             "rating_promedio" to 4.5
         )
 

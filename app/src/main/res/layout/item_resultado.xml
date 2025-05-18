@@ -25,8 +25,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Título"
+            android:textColor="#000000"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
 
         <TextView
             android:id="@+id/textoDescripcion"
@@ -34,8 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="Descripción del elemento"
-            android:textSize="14sp"
+            android:textColor="#000000"
 
+            android:textSize="14sp"
             card_view:layout_constraintStart_toStartOf="@+id/itemTexto"
             card_view:layout_constraintTop_toBottomOf="@+id/itemTexto" />
     </androidx.constraintlayout.widget.ConstraintLayout>
