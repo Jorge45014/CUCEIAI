@@ -37,18 +37,19 @@ class ResultadoAdapter(private var lista: List<Productos>, var botonActivo: Int)
     }
 
     val datos = listOf(
-        Pair("ene", 18.50),
-        Pair("feb", 18.75),
-        Pair("mar", 19.10),
-        Pair("abr", 19.00),
-        Pair("may", 19.30),
-        Pair("jun", 19.85),
-        Pair("jul", 20.10),
-        Pair("ago", 20.25),
-        Pair("sep", 20.40),
-        Pair("oct", 20.60),
-        Pair("nob", 21.00),
-        Pair("dic", 21.50)
+        Pair("jun24", 14.48),
+        Pair("jul24", 17.4),
+        Pair("ago24", 15.25),
+        Pair("sep24", 15.98),
+        Pair("oct24", 14.7),
+        Pair("nob24", 15.00),
+        Pair("dic24", 14.48),
+        Pair("ene25", 14.48),
+        Pair("feb25", 16.2),
+        Pair("mar25", 16.7),
+        Pair("abr25", 17.5),
+        Pair("may25", 16.98),
+        Pair("jun25", 19.05)
     )
 
 
