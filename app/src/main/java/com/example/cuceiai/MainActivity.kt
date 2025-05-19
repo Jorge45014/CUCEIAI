@@ -69,10 +69,9 @@ class MainActivity : AppCompatActivity() {
 
 
         val db = FirebaseFirestore.getInstance()
-        val listaTiendap = mutableListOf<Pair<String, Double>>()
         val meses = listOf("ene24", "feb24", "mar24", "abr24", "may24", "jun24", "jul24", "ago24", "sep24", "oct24", "nov24", "dic24")
-
-        val latch = CountDownLatch(meses.size) // Contador para esperar todas las consultas
+        val datosPorMes = mutableMapOf<String, Double>() // Mapa temporal para almacenar mes -> valor
+        val latch = CountDownLatch(meses.size)
 
         for (mes in meses) {
             db.collection("productos")
@@ -84,29 +83,35 @@ class MainActivity : AppCompatActivity() {
                     if (document.exists()) {
                         val precios = document.toObject(PreciosMensuales::class.java)
                         if (precios != null) {
-                            listaTiendap.add(Pair(mes, precios.tiendap))
+                            datosPorMes[mes] = precios.tiendap // Guardar en el mapa
                             Log.d("FirestoreProducto", "$mes - tiendap: ${precios.tiendap}")
                         }
                     }
-                    latch.countDown() // Decrementar el contador
+                    latch.countDown()
                 }
                 .addOnFailureListener { e ->
                     Log.e("FirestoreProducto", "$mes - Error", e)
-                    latch.countDown() // Decrementar incluso en fallos
+                    latch.countDown()
                 }
         }
 
-        // Esperar a que todas las consultas terminen (en un hilo secundario)
         Thread {
-            latch.await() // Bloquea hasta que el contador llegue a cero
+            latch.await() // Esperar a que todas las consultas terminen
 
-            // Ahora listaTiendap contiene todos los datos
-            runOnUiThread { // Vuelve al hilo principal para actualizar la UI
-                val listaDoubles = listaTiendap.map { it.second }
-                println("Datos completos: $listaTiendap")
+            // Ordenar los datos según el orden de `meses`
+            val listaTiendapOrdenada = meses.mapNotNull { mes ->
+                datosPorMes[mes]?.let { valor ->
+                    Pair(mes, valor)
+                }
+            }
 
-                if (listaDoubles.isNotEmpty()) {
-                    // Ejecutar la regresión polinomial aquí
+            runOnUiThread {
+                println("Datos ordenados por mes: $listaTiendapOrdenada")
+
+                if (listaTiendapOrdenada.isNotEmpty()) {
+                    val listaDoubles = listaTiendapOrdenada.map { it.second }
+
+                    // Ejecutar la regresión polinomial
                     for (degree in 1..5) {
                         val model = PolynomialRegression(degree)
                         model.fit(listaDoubles)
