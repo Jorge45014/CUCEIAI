@@ -178,7 +178,7 @@ class Main3Activity : AppCompatActivity() {
                     recyclerView.visibility = View.GONE
                 }
 
-                adapter.actualizarLista(resultadosFiltrados)
+                adapter.actualizarLista(resultadosFiltrados, botonActivo)
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -188,17 +188,17 @@ class Main3Activity : AppCompatActivity() {
 
     private fun verificarBotonActivo() {
         when (botonActivo) {
-            R.id.nav_home -> actualizarAdapter(listaCompleta)
-            R.id.statistics -> actualizarAdapter(listaCompleta2)
+            R.id.nav_home -> actualizarAdapter(listaCompleta, botonActivo) // Cambiar aquí
+            R.id.statistics -> actualizarAdapter(listaCompleta2, botonActivo) // Cambiar aquí
         }
         recyclerView.adapter = adapter
     }
 
-    private fun actualizarAdapter(lista: List<Productos>) {
+    private fun actualizarAdapter(lista: List<Productos>, botonId: Int) { // Cambiar aquí
         if (::adapter.isInitialized) {
-            adapter.actualizarLista(lista)
+            adapter.actualizarLista(lista, botonId) // Pasar ambos parámetros
         } else {
-            adapter = ResultadoAdapter(lista)
+            adapter = ResultadoAdapter(lista, botonId) // Inicializar con el botón
         }
         recyclerView.visibility = View.VISIBLE
     }
