@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         val productos = listOf("Aceite Mixto", "Aguacate Hass", "Arroz largo", "Azúcar Estándar", "Bistec Diezmillo de Res", "Calabacita Italiana", "Carne Molida", "Carne Molida Sirloin 90-10", "Cebolla bola", "Chayote sin espina", "Chile poblano", "Chile serrano", "Frijol Flor de Mayo", "Frijol Negro", "Guayaba", "Harina de Trigo", "Huevo Blanco", "Jitomate Saladette", "Lechuga romana", "Limón con semilla", "Manzana Golden", "Manzana Starking", "Naranja mediana", "Papa alpha", "Papaya maradol", "Pepino", "Piña", "Plátano", "Sandia", "Sandía", "Sirloin 90-10", "Tomate verde", "Zanahoria mediana")
 
         val db = FirebaseFirestore.getInstance()
-        val meses = listOf("ene24", "feb24", "mar24", "abr24", "may24", "jun24", "jul24", "ago24", "sep24", "oct24", "nov24", "dic24")
+        val meses = listOf( "nov24", "dic24","ene25", "feb25", "mar25", "abr25")
 
         val listaProximoMes = mutableListOf<ProductoPrecio>()
 
@@ -122,6 +122,7 @@ class MainActivity : AppCompatActivity() {
                     modelFinal.fit(listaDoubles)
                     val nextX = listaDoubles.size + 1.0
                     val prediction = modelFinal.predict(nextX)
+                    println("lista tienda $listaDoubles")
 
                     synchronized(listaProximoMes) {
                         listaProximoMes.add(ProductoPrecio(producto, prediction))
