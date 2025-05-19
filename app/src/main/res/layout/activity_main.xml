@@ -25,7 +25,7 @@
             android:textColor="#04CFE9"
             android:textSize="50sp"
             android:textStyle="bold"
-            android:translationX="-15dp"
+            android:translationX="-70dp"
             app:layout_constraintStart_toEndOf="@+id/textView2"
             app:layout_constraintTop_toTopOf="@+id/textView2" />
 
@@ -38,7 +38,7 @@
             android:textColor="@color/white"
             android:textSize="50sp"
             android:textStyle="bold"
-            android:translationX="-30dp"
+            android:translationX="-80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

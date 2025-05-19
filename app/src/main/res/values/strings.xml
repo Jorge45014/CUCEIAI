@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">CUCEI IA</string>
-    <string name="menu_titulo1">CUCEI</string>
-    <string name="menu_titulo2">IA</string>
+    <string name="app_name">Curva de la Canasta Basica</string>
+    <string name="menu_titulo1">Canasta </string>
+    <string name="menu_titulo2">Basica</string>
     <string name="menu_button1">Iniciar sesión</string>
     <string name="menu_pregunta">¿No tienes cuenta?</string>
     <string name="menu_button2">Regístrate.</string>
@@ -64,7 +64,7 @@
     <string name="title_activity_main3">MainActivity3</string>
     <string name="title_menu">Menu</string>
 
-    <string name="textacercade">Esta aplicación permite a los estudiantes compartir y consultar reseñas sobre profesores de diversas instituciones académicas. Nuestro objetivo es brindar una plataforma transparente y confiable para ayudar a los alumnos a tomar mejores decisiones sobre sus clases.</string>
+    <string name="textacercade">Esta aplicación permite a los usuarios estimar el costo de la canasta básica en su localidad. Nuestro objetivo es proporcionar una herramienta clara y accesible que ayude a las personas a tomar decisiones informadas sobre su presupuesto y necesidades esenciales.</string>
     <string name="ubiacercade">Blvd. Marcelino García Barragán #1421, esq Calzada</string>
 
 

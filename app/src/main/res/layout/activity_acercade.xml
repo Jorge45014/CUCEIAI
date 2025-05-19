@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Desarrollado por: Tu Nombre"
+            android:text="Desarrollado por: Jorge y Ruben"
             android:textColor="#838383"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
