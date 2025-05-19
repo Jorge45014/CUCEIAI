@@ -45,14 +45,20 @@ class Main3Activity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ResultadoAdapter
     private lateinit var listaCompleta: List<Profesor>
+    private lateinit var listaCompleta2: List<Profesor>
+    private lateinit var tituloContenedor: TextView
+
+    private var botonActivo: Int = R.id.nav_home
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMain3Binding.inflate(layoutInflater)
         setContentView(binding.root)
-        recyclerView = findViewById(R.id.recyclerViewResultados)
-        recyclerView.visibility = View.GONE
+        recyclerView = findViewById(R.id.ProductosR)
+
+        tituloContenedor = findViewById(R.id.textView8e)
+
 
         setSupportActionBar(binding.appBarMain3.toolbar)
 
@@ -91,8 +97,11 @@ class Main3Activity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         bottomNavigationView.setOnItemSelectedListener { item ->
+            botonActivo = item.itemId
             when (item.itemId) {
                 R.id.nav_home -> {
+                    tituloContenedor.text = "Este Mes"
+                    verificarBotonActivo()
                     if (this::class.java != Main3Activity::class.java) {
                         val intent = Intent(this, Main3Activity::class.java)
                         finish()
@@ -101,6 +110,8 @@ class Main3Activity : AppCompatActivity() {
                     true
                 }
                 R.id.statistics -> {
+                    tituloContenedor.text = "Estimar el siguiente mes"
+                    verificarBotonActivo()
                     true
                 }
                 /*
@@ -124,29 +135,33 @@ class Main3Activity : AppCompatActivity() {
 
         // Barra de búsqueda
         val buscador = findViewById<EditText>(R.id.autoCompleteTextView)
-        recyclerView = findViewById(R.id.recyclerViewResultados)
+        recyclerView = findViewById(R.id.ProductosR)
 
         // Lista simulada (aquí pondrías los datos de tu base de datos) /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        val db = FirebaseFirestore.getInstance()
-        val listaCompleta = mutableListOf<Profesor>()
+        listaCompleta = listOf(
+            Profesor("1", "Ana López", "Matemáticas", 4.8),
+            Profesor("2", "Luis Gómez", "Física", 4.5),
+            Profesor("3", "María Pérez", "Historia", 4.9),
+            Profesor("4", "Carlos Torres", "Química", 4.2),
+            Profesor("5", "Sofía Ramírez", "Biología", 4.6)
+        )
 
-        db.collection("profesores")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    val profesor = document.toObject(Profesor::class.java)
-                    listaCompleta.add(profesor)
-                }
+        listaCompleta2 = listOf(
+            Profesor("101", "Arroz", "Grano", 28.50),
+            Profesor("102", "Aceite vegetal", "Aceites", 42.90),
+            Profesor("103", "Leche entera", "Lácteos", 23.75),
+            Profesor("104", "Huevos (docena)", "Proteína", 36.10),
+            Profesor("105", "Pan de caja", "Panadería", 29.40),
+            Profesor("101", "Arroz", "Grano", 28.50),
+            Profesor("102", "Aceite vegetal", "Aceites", 42.90),
+            Profesor("103", "Leche entera", "Lácteos", 23.75),
+            Profesor("104", "Huevos (docena)", "Proteína", 36.10),
+            Profesor("105", "Pan de caja", "Panadería", 29.40)
+        )
 
-                // Aquí ya tienes listaCompleta cargada
-                println("Profesores obtenidos: $listaCompleta")
-            }
-            .addOnFailureListener { exception ->
-                Log.w("Firestore", "Error al obtener documentos.", exception)
-            }
 
-        adapter = ResultadoAdapter(listaCompleta)
+        verificarBotonActivo()
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
@@ -172,6 +187,23 @@ class Main3Activity : AppCompatActivity() {
         })
     }
 
+    private fun verificarBotonActivo() {
+        when (botonActivo) {
+            R.id.nav_home -> actualizarAdapter(listaCompleta)
+            R.id.statistics -> actualizarAdapter(listaCompleta2)
+        }
+        recyclerView.adapter = adapter
+    }
+
+    private fun actualizarAdapter(lista: List<Profesor>) {
+        if (::adapter.isInitialized) {
+            adapter.actualizarLista(lista)
+        } else {
+            adapter = ResultadoAdapter(lista)
+        }
+        recyclerView.visibility = View.VISIBLE
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////ds/////////////////////////////////////////////////////////////////////////////////////////////////
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main3, menu)
@@ -191,8 +223,6 @@ class Main3Activity : AppCompatActivity() {
         val buscador = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
         val textView8 = findViewById<TextView>(R.id.textView8e)
         val textView9 = findViewById<TextView>(R.id.textView9)
-        val scrollView1 = findViewById<HorizontalScrollView>(R.id.horizontalScrollView2)
-        val scrollView2 = findViewById<HorizontalScrollView>(R.id.horizontalScrollView2)
 
         // Este bloque se ejecutará cuando empiecen a escribir
         buscador.addTextChangedListener(object : TextWatcher {
@@ -203,14 +233,10 @@ class Main3Activity : AppCompatActivity() {
                 if (texto.isNotEmpty()) {
                     textView8.visibility = View.GONE
                     textView9.visibility = View.GONE
-                    scrollView1.visibility = View.GONE
-                    scrollView2.visibility = View.GONE
                 } else {
                     // Si no hay texto, mostrar las vistas
                     textView8.visibility = View.VISIBLE
                     textView9.visibility = View.VISIBLE
-                    scrollView1.visibility = View.VISIBLE
-                    scrollView2.visibility = View.VISIBLE
                 }
             }
 
@@ -232,14 +258,10 @@ class Main3Activity : AppCompatActivity() {
                     // Ocultar vistas después de buscar
                     textView8.visibility = View.GONE
                     textView9.visibility = View.GONE
-                    scrollView1.visibility = View.GONE
-                    scrollView2.visibility = View.GONE
                 } else {
                     // Mostrar vistas si no hay texto
                     textView8.visibility = View.VISIBLE
                     textView9.visibility = View.VISIBLE
-                    scrollView1.visibility = View.VISIBLE
-                    scrollView2.visibility = View.VISIBLE
                 }
 
                 true
