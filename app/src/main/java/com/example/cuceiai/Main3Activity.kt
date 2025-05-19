@@ -44,8 +44,8 @@ class Main3Activity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ResultadoAdapter
-    private lateinit var listaCompleta: List<Profesor>
-    private lateinit var listaCompleta2: List<Profesor>
+    private lateinit var listaCompleta: List<Productos>
+    private lateinit var listaCompleta2: List<Productos>
     private lateinit var tituloContenedor: TextView
 
     private var botonActivo: Int = R.id.nav_home
@@ -140,26 +140,25 @@ class Main3Activity : AppCompatActivity() {
         // Lista simulada (aquí pondrías los datos de tu base de datos) /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         listaCompleta = listOf(
-            Profesor("1", "Ana López", "Matemáticas", 4.8),
-            Profesor("2", "Luis Gómez", "Física", 4.5),
-            Profesor("3", "María Pérez", "Historia", 4.9),
-            Profesor("4", "Carlos Torres", "Química", 4.2),
-            Profesor("5", "Sofía Ramírez", "Biología", 4.6)
+            Productos("Ana López", 4.8),
+            Productos("Luis Gómez", 4.5),
+            Productos("María Pérez", 4.9),
+            Productos("Carlos Torres", 4.2),
+            Productos("Sofía Ramírez", 4.6)
         )
 
         listaCompleta2 = listOf(
-            Profesor("101", "Arroz", "Grano", 28.50),
-            Profesor("102", "Aceite vegetal", "Aceites", 42.90),
-            Profesor("103", "Leche entera", "Lácteos", 23.75),
-            Profesor("104", "Huevos (docena)", "Proteína", 36.10),
-            Profesor("105", "Pan de caja", "Panadería", 29.40),
-            Profesor("101", "Arroz", "Grano", 28.50),
-            Profesor("102", "Aceite vegetal", "Aceites", 42.90),
-            Profesor("103", "Leche entera", "Lácteos", 23.75),
-            Profesor("104", "Huevos (docena)", "Proteína", 36.10),
-            Profesor("105", "Pan de caja", "Panadería", 29.40)
+            Productos("Arroz", 28.50),
+            Productos("Aceite vegetal", 42.90),
+            Productos("Leche entera", 23.75),
+            Productos("Huevos (docena)", 36.10),
+            Productos("Pan de caja", 29.40),
+            Productos("Arroz", 28.50),
+            Productos("Aceite vegetal", 42.90),
+            Productos("Leche entera", 23.75),
+            Productos("Huevos (docena)", 36.10),
+            Productos("Pan de caja", 29.40)
         )
-
 
         verificarBotonActivo()
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -170,7 +169,7 @@ class Main3Activity : AppCompatActivity() {
                 val texto = s.toString().trim()
                 val resultadosFiltrados = listaCompleta.filter {
                     it.nombre.contains(texto, ignoreCase = true) ||
-                            it.especialidad.contains(texto, ignoreCase = true)
+                            it.precio.toString().contains(texto)
                 }
 
                 if (texto.isNotEmpty()) {
@@ -195,7 +194,7 @@ class Main3Activity : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
-    private fun actualizarAdapter(lista: List<Profesor>) {
+    private fun actualizarAdapter(lista: List<Productos>) {
         if (::adapter.isInitialized) {
             adapter.actualizarLista(lista)
         } else {
