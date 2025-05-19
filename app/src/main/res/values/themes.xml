@@ -10,7 +10,7 @@
 
         <!-- Otros colores del tema -->
         <item name="colorPrimary">@color/black</item>
-        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorOnPrimary">@color/black</item>
         <item name="colorSurface">@color/surface</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
@@ -22,13 +22,33 @@
 
     <!-- Estilo personalizado para AlertDialog -->
     <style name="CustomAlertDialogTheme" parent="Theme.AppCompat.Dialog.Alert">
-        <item name="android:windowBackground">@color/colorPrimaryDark</item>
-        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:windowBackground">@drawable/rounded_dialog</item>
+        <!-- Color texto principal -->
+        <item name="android:textColorPrimary">#000000</item>
+        <!-- Color texto secundario -->
+        <item name="android:textColorSecondary">#000000</item>
+        <!-- Color de acento (botones) -->
         <item name="colorAccent">#4CAF50</item>
+        <!-- Color texto botones -->
+        <item name="buttonBarButtonStyle">@style/AlertDialogButtons</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeButton</item>
+    </style>
+
+    <style name="AlertDialogTitle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="AlertDialogBody" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="AlertDialogButtons" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#000000</item>
     </style>
 
     <style name="PositiveButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">#4CAF50</item> <!-- Verde -->
+        <item name="android:textColor">#000000</item> <!-- Verde -->
     </style>
 
     <style name="NegativeButton" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">

@@ -95,12 +95,13 @@ class Main3Activity : AppCompatActivity() {
         }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.nav_home
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             botonActivo = item.itemId
             when (item.itemId) {
                 R.id.nav_home -> {
-                    tituloContenedor.text = "Este Mes"
+                    tituloContenedor.text = "Precios de este mes"
                     verificarBotonActivo()
                     if (this::class.java != Main3Activity::class.java) {
                         val intent = Intent(this, Main3Activity::class.java)

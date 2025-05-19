@@ -81,10 +81,10 @@ class ResultadoAdapter(private var lista: List<Productos>, var botonActivo: Int)
                     }
 
                     val dataSet = LineDataSet(entries, "Precio mensual").apply {
-                        color = Color.WHITE
-                        valueTextColor = Color.WHITE
+                        color = Color.BLACK
+                        valueTextColor = Color.BLACK
                         lineWidth = 2f
-                        setCircleColor(Color.WHITE)
+                        setCircleColor(Color.BLACK)
                         circleRadius = 4f
                     }
 
@@ -92,16 +92,18 @@ class ResultadoAdapter(private var lista: List<Productos>, var botonActivo: Int)
                     lineChart.apply {
                         data = lineData
                         description.isEnabled = false
-                        legend.textColor = Color.WHITE
+                        legend.textColor = Color.BLACK
+                        xAxis.textColor = Color.BLACK
+                        axisLeft.textColor = Color.BLACK
+                        description.textColor = Color.BLACK
                         xAxis.apply {
-                            textColor = Color.WHITE
+                            textColor = Color.BLACK
                             valueFormatter = object : ValueFormatter() {
                                 override fun getFormattedValue(value: Float): String {
                                     return datos.getOrNull(value.toInt())?.first ?: ""
                                 }
                             }
                         }
-                        axisLeft.textColor = Color.WHITE
                         axisRight.isEnabled = false
                         invalidate()
                     }
@@ -111,7 +113,7 @@ class ResultadoAdapter(private var lista: List<Productos>, var botonActivo: Int)
                     dialog.show()
 
                     val width = (context.resources.displayMetrics.widthPixels * 0.9).toInt()
-                    val height = (context.resources.displayMetrics.heightPixels * 0.6).toInt()
+                    val height = (context.resources.displayMetrics.heightPixels * 0.64).toInt()
                     dialog.window?.setLayout(width, height)
                 }
                 else -> {
