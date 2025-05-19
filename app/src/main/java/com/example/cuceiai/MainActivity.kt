@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
+import java.util.concurrent.CountDownLatch
+import kotlin.text.toDouble
 
 
 class MainActivity : AppCompatActivity() {
@@ -60,9 +62,88 @@ class MainActivity : AppCompatActivity() {
             setup()
 
 
+
+
         }
 
+
+
+        val db = FirebaseFirestore.getInstance()
+        val listaTiendap = mutableListOf<Pair<String, Double>>()
+        val meses = listOf("ene24", "feb24", "mar24", "abr24", "may24", "jun24", "jul24", "ago24", "sep24", "oct24", "nov24", "dic24")
+
+        val latch = CountDownLatch(meses.size) // Contador para esperar todas las consultas
+
+        for (mes in meses) {
+            db.collection("productos")
+                .document("Aguacate Hass")
+                .collection(mes)
+                .document("datos")
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        val precios = document.toObject(PreciosMensuales::class.java)
+                        if (precios != null) {
+                            listaTiendap.add(Pair(mes, precios.tiendap))
+                            Log.d("FirestoreProducto", "$mes - tiendap: ${precios.tiendap}")
+                        }
+                    }
+                    latch.countDown() // Decrementar el contador
+                }
+                .addOnFailureListener { e ->
+                    Log.e("FirestoreProducto", "$mes - Error", e)
+                    latch.countDown() // Decrementar incluso en fallos
+                }
+        }
+
+        // Esperar a que todas las consultas terminen (en un hilo secundario)
+        Thread {
+            latch.await() // Bloquea hasta que el contador llegue a cero
+
+            // Ahora listaTiendap contiene todos los datos
+            runOnUiThread { // Vuelve al hilo principal para actualizar la UI
+                val listaDoubles = listaTiendap.map { it.second }
+                println("Datos completos: $listaTiendap")
+
+                if (listaDoubles.isNotEmpty()) {
+                    // Ejecutar la regresión polinomial aquí
+                    for (degree in 1..5) {
+                        val model = PolynomialRegression(degree)
+                        model.fit(listaDoubles)
+                        val predictions = listaDoubles.indices.map { x -> model.predict(x + 1.0) }
+                        val error = meanSquaredError(listaDoubles, predictions)
+                        println("Grado $degree, MSE = $error")
+                    }
+
+                    val bestDegree = 2 // O el que tenga menor MSE
+                    val modelFinal = PolynomialRegression(bestDegree)
+                    modelFinal.fit(listaDoubles)
+                    val nextX = listaDoubles.size + 1.0
+                    val prediction = modelFinal.predict(nextX)
+                    println("Predicción para x=$nextX: y=$prediction")
+                } else {
+                    println("No hay datos disponibles")
+                }
+            }
+        }.start()
+
+
+
+
     }
+
+    // Función para calcular error cuadrático medio (MSE)
+    fun meanSquaredError(yTrue: List<Double>, yPred: List<Double>): Double {
+        var sum = 0.0
+        for (i in yTrue.indices) {
+            sum += (yTrue[i] - yPred[i]) * (yTrue[i] - yPred[i])
+        }
+        return sum / yTrue.size
+    }
+
+
+
+
     private fun setup(){
         button_ini_sesion_google = findViewById(R.id.buttonInicgoogle)
         button_ini_sesion_google.setOnClickListener {
@@ -137,42 +218,10 @@ class MainActivity : AppCompatActivity() {
         }
         startActivity(homeIntent)
     }
-    private fun agregarNuevoProfesor() {
 
-        // Crear el profesor
-        val nuevoProfesor = hashMapOf(
-            "nombre" to "Ana Martínez",
-            "especialidad" to "Matemáticas",
-            "rating_promedio" to 4.5
-        )
 
-        db.collection("profesores")
-            .add(nuevoProfesor)
-            .addOnSuccessListener { docRef ->
-                Log.d("Firestore", "Profesor agregado con ID: ${docRef.id}")
 
-                // Ahora agregar opiniones para este profesor usando su ID
-                val opiniones =
-                    db.collection("profesores").document(docRef.id).collection("opiniones")
 
-                // Opinión 1
-                val opinion1 = hashMapOf(
-                    "usuario" to "Juan Pérez",
-                    "comentario" to "Excelente profesora, explica muy bien.",
-                    "rating" to 5,
-                    "fecha" to "2025-04-23"
-                )
-                opiniones.add(opinion1)
 
-                // Opinión 2
-                val opinion2 = hashMapOf(
-                    "usuario" to "María López",
-                    "comentario" to "Muy buena, pero podría explicar más despacio.",
-                    "rating" to 4,
-                    "fecha" to "2025-04-22"
-                )
-                opiniones.add(opinion2)
-            }
 
-    }
 }

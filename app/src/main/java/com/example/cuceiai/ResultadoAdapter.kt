@@ -13,7 +13,6 @@ data class Profesor(
     val nombre: String = "",
     val especialidad: String = "",
     val rating_promedio: Double = 0.0
-
 )
 
 class ResultadoAdapter(private var lista: List<Profesor>) :
