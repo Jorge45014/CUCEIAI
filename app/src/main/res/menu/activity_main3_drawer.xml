@@ -23,6 +23,11 @@
             android:id="@+id/nav_acerca_de"
             android:icon="@drawable/fluent__people_team_16_filled"
             android:title="@string/menu_acercade" />
+
+        <item
+            android:id="@+id/cerrar_sesion"
+            android:icon="@drawable/material_symbols__logout"
+            android:title="@string/menu_cerrar_sesion" />
     </group>
 
 

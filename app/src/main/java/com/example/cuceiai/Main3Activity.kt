@@ -29,6 +29,7 @@ import android.widget.HorizontalScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cuceiai.ProductoPrecio
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.CountDownLatch
 import kotlin.jvm.java
@@ -93,6 +94,13 @@ class Main3Activity : AppCompatActivity() {
                 }
                 R.id.nav_acerca_de -> {
                     val intent = Intent(this, activity_acercade::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.cerrar_sesion -> {
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     true
                 }

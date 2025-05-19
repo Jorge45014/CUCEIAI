@@ -83,10 +83,36 @@ class ResultadoAdapter(private var lista: List<Productos>, var botonActivo: Int)
 
                     val dataSet = LineDataSet(entries, "Precio mensual").apply {
                         color = Color.BLACK
-                        valueTextColor = Color.BLACK
+                        setValueTextColor(Color.BLACK) // Color por defecto
                         lineWidth = 2f
-                        setCircleColor(Color.BLACK)
+
+                        // Configurar colores de los puntos
+                        setCircleColors(
+                            List(entries.size) { i ->
+                                if (i == entries.lastIndex) Color.RED else Color.BLACK
+                            }
+                        )
+
+                        // Configurar colores del texto de los valores
+                        val valueColors = entries.mapIndexed { index, _ ->
+                            if (index == entries.lastIndex) Color.RED else Color.BLACK
+                        }
+
+                        setValueTextColors(valueColors.map { listOf(it) }) // Formato requerido
+
                         circleRadius = 4f
+                        circleHoleRadius = 2f
+                        valueFormatter = object : ValueFormatter() {
+                            override fun getFormattedValue(value: Float): String {
+                                return "%.2f".format(value)
+                            }
+                        }
+                    }
+
+                    dataSet.color = if (entries.size > 1) {
+                        Color.rgb(0, 0, 0)
+                    } else {
+                        Color.RED
                     }
 
                     val lineData = LineData(dataSet)
@@ -123,6 +149,8 @@ class ResultadoAdapter(private var lista: List<Productos>, var botonActivo: Int)
             }
         }
     }
+
+    private fun setValueTextColors(lists: List<List<Int>>) {}
 
     override fun getItemCount(): Int = lista.size
 

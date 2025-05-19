@@ -1,0 +1,355 @@
+kotlin version: 2.0.21
+error message: org.jetbrains.kotlin.backend.common.BackendException: Backend Internal error: Exception during IR lowering
+File being compiled: C:/Users/Jaimito May Cry/AndroidStudioProjects/CUCEIAI/app/src/main/java/com/example/cuceiai/ResultadoAdapter.kt
+The root cause java.lang.RuntimeException was thrown at: org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException(CodegenUtil.kt:253)
+	at org.jetbrains.kotlin.backend.common.CodegenUtil.reportBackendException$default(CodegenUtil.kt:236)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:65)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:52)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invoke(performByIrFile.kt:38)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:27)
+	at org.jetbrains.kotlin.backend.common.phaser.CompositePhase.invoke(PhaseBuilders.kt:14)
+	at org.jetbrains.kotlin.backend.common.phaser.NamedCompilerPhase.phaseBody(CompilerPhase.kt:166)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.CompilerPhaseKt.invokeToplevel(CompilerPhase.kt:62)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.invokeCodegen(JvmIrCodegenFactory.kt:371)
+	at org.jetbrains.kotlin.codegen.CodegenFactory.generateModule(CodegenFactory.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.JvmIrCodegenFactory.generateModuleInFrontendIRMode(JvmIrCodegenFactory.kt:433)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.generateCodeFromIr(jvmCompilerPipeline.kt:246)
+	at org.jetbrains.kotlin.cli.jvm.compiler.pipeline.JvmCompilerPipelineKt.compileModulesUsingFrontendIrAndLightTree(jvmCompilerPipeline.kt:142)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:148)
+	at org.jetbrains.kotlin.cli.jvm.K2JVMCompiler.doExecute(K2JVMCompiler.kt:43)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:103)
+	at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.kt:49)
+	at org.jetbrains.kotlin.cli.common.CLITool.exec(CLITool.kt:101)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:464)
+	at org.jetbrains.kotlin.incremental.IncrementalJvmCompilerRunner.runCompiler(IncrementalJvmCompilerRunner.kt:73)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.doCompile(IncrementalCompilerRunner.kt:506)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compileImpl(IncrementalCompilerRunner.kt:423)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally$lambda$9$compile(IncrementalCompilerRunner.kt:249)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.tryCompileIncrementally(IncrementalCompilerRunner.kt:267)
+	at org.jetbrains.kotlin.incremental.IncrementalCompilerRunner.compile(IncrementalCompilerRunner.kt:120)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.execIncrementalCompiler(CompileServiceImpl.kt:675)
+	at org.jetbrains.kotlin.daemon.CompileServiceImplBase.access$execIncrementalCompiler(CompileServiceImpl.kt:92)
+	at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:1660)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at java.rmi/sun.rmi.server.UnicastServerRef.dispatch(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.Transport.serviceCall(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport.handleMessages(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.rmi/sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN LOCAL_FUNCTION_FOR_LAMBDA name:onBindViewHolder$lambda$14 visibility:private modality:FINAL <> ($holder:com.example.cuceiai.ResultadoAdapter.ResultadoViewHolder, this$0:com.example.cuceiai.ResultadoAdapter, $producto:com.example.cuceiai.Productos, it:@[FlexibleNullability] android.view.View?) returnType:kotlin.Unit
+  VALUE_PARAMETER BOUND_VALUE_PARAMETER name:$holder index:0 type:com.example.cuceiai.ResultadoAdapter.ResultadoViewHolder
+  VALUE_PARAMETER BOUND_VALUE_PARAMETER name:this$0 index:1 type:com.example.cuceiai.ResultadoAdapter
+  VALUE_PARAMETER BOUND_VALUE_PARAMETER name:$producto index:2 type:com.example.cuceiai.Productos
+  VALUE_PARAMETER name:it index:3 type:@[FlexibleNullability] android.view.View?
+  BLOCK_BODY
+    VAR name:context type:@[FlexibleNullability] android.content.Context? [val]
+      CALL 'public final fun getContext (): @[FlexibleNullability] android.content.Context? declared in android.view.View' type=@[FlexibleNullability] android.content.Context? origin=GET_PROPERTY
+        $this: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:itemView type:@[EnhancedNullability] android.view.View visibility:public [final] declared in androidx.recyclerview.widget.RecyclerView.ViewHolder' type=@[EnhancedNullability] android.view.View superQualifierSymbol=com.example.cuceiai.ResultadoAdapter.ResultadoViewHolder origin=null
+          receiver: GET_VAR '$holder: com.example.cuceiai.ResultadoAdapter.ResultadoViewHolder declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.ResultadoAdapter.ResultadoViewHolder origin=null
+    COMPOSITE type=kotlin.Unit origin=null
+      BLOCK type=kotlin.Unit? origin=WHEN
+        VAR IR_TEMPORARY_VARIABLE name:tmp0_subject type:kotlin.Int [val]
+          GET_FIELD 'FIELD PROPERTY_BACKING_FIELD name:botonActivo type:kotlin.Int visibility:private' type=kotlin.Int origin=null
+            receiver: GET_VAR 'this$0: com.example.cuceiai.ResultadoAdapter declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.ResultadoAdapter origin=null
+        WHEN type=kotlin.Unit? origin=WHEN
+          BRANCH
+            if: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=EQEQ
+              arg0: GET_VAR 'val tmp0_subject: kotlin.Int [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=kotlin.Int origin=null
+              arg1: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:statistics type:kotlin.Int visibility:public [static] declared in com.example.cuceiai.R.id' type=kotlin.Int superQualifierSymbol=com.example.cuceiai.R.id origin=null
+            then: BLOCK type=kotlin.Unit? origin=null
+              VAR name:dialogView type:@[FlexibleNullability] android.view.View? [val]
+                CALL 'public open fun inflate (p0: kotlin.Int, p1: @[EnhancedNullability] android.view.ViewGroup?): @[FlexibleNullability] android.view.View? declared in android.view.LayoutInflater' type=@[FlexibleNullability] android.view.View? origin=null
+                  $this: CALL 'public open fun from (p0: @[FlexibleNullability] android.content.Context?): @[FlexibleNullability] android.view.LayoutInflater? declared in android.view.LayoutInflater' type=@[FlexibleNullability] android.view.LayoutInflater? origin=null
+                    p0: GET_VAR 'val context: @[FlexibleNullability] android.content.Context? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.content.Context? origin=null
+                  p0: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:dialog_chart type:kotlin.Int visibility:public [static] declared in com.example.cuceiai.R.layout' type=kotlin.Int superQualifierSymbol=com.example.cuceiai.R.layout origin=null
+                  p1: CONST Null type=kotlin.Nothing? value=null
+              VAR name:dialog type:@[FlexibleNullability] android.app.AlertDialog? [val]
+                CALL 'public open fun create (): @[FlexibleNullability] android.app.AlertDialog? declared in android.app.AlertDialog.Builder' type=@[FlexibleNullability] android.app.AlertDialog? origin=null
+                  $this: CALL 'public open fun setPositiveButton (p0: @[FlexibleNullability] kotlin.CharSequence?, p1: @[FlexibleNullability] android.content.DialogInterface.OnClickListener?): @[FlexibleNullability] android.app.AlertDialog.Builder? declared in android.app.AlertDialog.Builder' type=@[FlexibleNullability] android.app.AlertDialog.Builder? origin=null
+                    $this: CALL 'public open fun setView (p0: @[FlexibleNullability] android.view.View?): @[FlexibleNullability] android.app.AlertDialog.Builder? declared in android.app.AlertDialog.Builder' type=@[FlexibleNullability] android.app.AlertDialog.Builder? origin=null
+                      $this: CALL 'public open fun setTitle (p0: @[FlexibleNullability] kotlin.CharSequence?): @[FlexibleNullability] android.app.AlertDialog.Builder? declared in android.app.AlertDialog.Builder' type=@[FlexibleNullability] android.app.AlertDialog.Builder? origin=null
+                        $this: CONSTRUCTOR_CALL 'public constructor <init> (p0: @[FlexibleNullability] android.content.Context?, p1: kotlin.Int) declared in android.app.AlertDialog.Builder' type=android.app.AlertDialog.Builder origin=null
+                          p0: GET_VAR 'val context: @[FlexibleNullability] android.content.Context? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.content.Context? origin=null
+                          p1: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:CustomAlertDialogTheme type:kotlin.Int visibility:public [static] declared in com.example.cuceiai.R.style' type=kotlin.Int superQualifierSymbol=com.example.cuceiai.R.style origin=null
+                        p0: CONST String type=kotlin.String value="Historial de Precios"
+                      p0: GET_VAR 'val dialogView: @[FlexibleNullability] android.view.View? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.view.View? origin=null
+                    p0: CONST String type=kotlin.String value="Aceptar"
+                    p1: BLOCK type=android.content.DialogInterface.OnClickListener origin=LAMBDA
+                      COMPOSITE type=kotlin.Unit origin=null
+                      CALL 'public final fun <jvm-indy> <T> (dynamicCall: T of kotlin.jvm.internal.<jvm-indy>, bootstrapMethodHandle: kotlin.Any, vararg bootstrapMethodArguments: kotlin.Any): T of kotlin.jvm.internal.<jvm-indy> declared in kotlin.jvm.internal' type=android.content.DialogInterface.OnClickListener origin=null
+                        <T>: android.content.DialogInterface.OnClickListener
+                        dynamicCall: CALL 'public final fun onClick (): android.content.DialogInterface.OnClickListener declared in kotlin.jvm.internal.invokeDynamic' type=android.content.DialogInterface.OnClickListener origin=null
+                        bootstrapMethodHandle: CALL 'public final fun <jvm-method-handle> (tag: kotlin.Int, owner: kotlin.String, name: kotlin.String, descriptor: kotlin.String, isInterface: kotlin.Boolean): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                          tag: CONST Int type=kotlin.Int value=6
+                          owner: CONST String type=kotlin.String value="java/lang/invoke/LambdaMetafactory"
+                          name: CONST String type=kotlin.String value="metafactory"
+                          descriptor: CONST String type=kotlin.String value="(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;"
+                          isInterface: CONST Boolean type=kotlin.Boolean value=false
+                        bootstrapMethodArguments: VARARG type=kotlin.Array<kotlin.Any> varargElementType=kotlin.Any
+                          CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                            method: RAW_FUNCTION_REFERENCE 'public abstract fun onClick (p0: @[FlexibleNullability] android.content.DialogInterface?, p1: kotlin.Int): kotlin.Unit declared in android.content.DialogInterface.OnClickListener' type=kotlin.Any
+                          RAW_FUNCTION_REFERENCE 'private final fun onBindViewHolder$lambda$14$lambda$0 (d: @[FlexibleNullability] android.content.DialogInterface?, <unused var>: kotlin.Int): kotlin.Unit declared in com.example.cuceiai.ResultadoAdapter' type=kotlin.Any
+                          CALL 'public final fun <jvm-original-method-type> (method: kotlin.Any): kotlin.Any declared in kotlin.jvm.internal' type=kotlin.Any origin=null
+                            method: RAW_FUNCTION_REFERENCE 'public abstract fun onClick (p0: @[FlexibleNullability] android.content.DialogInterface?, p1: kotlin.Int): kotlin.Unit [fake_override] declared in kotlin.jvm.internal.invokeDynamic.<fake>' type=kotlin.Any
+              VAR name:lineChart type:@[FlexibleNullability] com.github.mikephil.charting.charts.LineChart? [val]
+                CALL 'public final fun findViewById <T> (p0: kotlin.Int): @[FlexibleNullability] T of android.view.View.findViewById? declared in android.view.View' type=@[FlexibleNullability] com.github.mikephil.charting.charts.LineChart? origin=null
+                  <T>: @[FlexibleNullability] com.github.mikephil.charting.charts.LineChart?
+                  $this: GET_VAR 'val dialogView: @[FlexibleNullability] android.view.View? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.view.View? origin=null
+                  p0: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:lineChart type:kotlin.Int visibility:public [static] declared in com.example.cuceiai.R.id' type=kotlin.Int superQualifierSymbol=com.example.cuceiai.R.id origin=null
+              VAR name:tvInfo type:@[FlexibleNullability] android.widget.TextView? [val]
+                CALL 'public final fun findViewById <T> (p0: kotlin.Int): @[FlexibleNullability] T of android.view.View.findViewById? declared in android.view.View' type=@[FlexibleNullability] android.widget.TextView? origin=null
+                  <T>: @[FlexibleNullability] android.widget.TextView?
+                  $this: GET_VAR 'val dialogView: @[FlexibleNullability] android.view.View? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.view.View? origin=null
+                  p0: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:tvInfo type:kotlin.Int visibility:public [static] declared in com.example.cuceiai.R.id' type=kotlin.Int superQualifierSymbol=com.example.cuceiai.R.id origin=null
+              VAR name:entries type:java.util.ArrayList<com.github.mikephil.charting.data.Entry> [val]
+                CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=java.util.ArrayList<com.github.mikephil.charting.data.Entry> origin=null
+                  <T>: java.util.ArrayList<com.github.mikephil.charting.data.Entry>
+                  $receiver: CONSTRUCTOR_CALL 'public constructor <init> () declared in java.util.ArrayList' type=java.util.ArrayList<com.github.mikephil.charting.data.Entry> origin=null
+                    <class: E>: com.github.mikephil.charting.data.Entry
+                  block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<java.util.ArrayList<com.github.mikephil.charting.data.Entry>, kotlin.Unit> origin=LAMBDA
+                    COMPOSITE type=kotlin.Unit origin=null
+                    FUNCTION_REFERENCE 'private final fun onBindViewHolder$lambda$14$lambda$2 (this$0: com.example.cuceiai.ResultadoAdapter): kotlin.Unit declared in com.example.cuceiai.ResultadoAdapter' type=@[ExtensionFunctionType] kotlin.Function1<java.util.ArrayList<com.github.mikephil.charting.data.Entry>, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+                      this$0: GET_VAR 'this$0: com.example.cuceiai.ResultadoAdapter declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.ResultadoAdapter origin=null
+              VAR name:dataSet type:com.github.mikephil.charting.data.LineDataSet [val]
+                CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.github.mikephil.charting.data.LineDataSet origin=null
+                  <T>: com.github.mikephil.charting.data.LineDataSet
+                  $receiver: CONSTRUCTOR_CALL 'public constructor <init> (p0: @[FlexibleNullability] @[FlexibleMutability] kotlin.collections.MutableList<@[FlexibleNullability] com.github.mikephil.charting.data.Entry?>?, p1: @[FlexibleNullability] kotlin.String?) declared in com.github.mikephil.charting.data.LineDataSet' type=com.github.mikephil.charting.data.LineDataSet origin=null
+                    p0: GET_VAR 'val entries: java.util.ArrayList<com.github.mikephil.charting.data.Entry> [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=java.util.ArrayList<com.github.mikephil.charting.data.Entry> origin=null
+                    p1: CONST String type=kotlin.String value="Precio mensual"
+                  block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.data.LineDataSet, kotlin.Unit> origin=LAMBDA
+                    COMPOSITE type=kotlin.Unit origin=null
+                    FUNCTION_REFERENCE 'private final fun onBindViewHolder$lambda$14$lambda$6 ($entries: java.util.ArrayList<com.github.mikephil.charting.data.Entry>, this$0: com.example.cuceiai.ResultadoAdapter): kotlin.Unit declared in com.example.cuceiai.ResultadoAdapter' type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.data.LineDataSet, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+                      $entries: GET_VAR 'val entries: java.util.ArrayList<com.github.mikephil.charting.data.Entry> [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=java.util.ArrayList<com.github.mikephil.charting.data.Entry> origin=null
+                      this$0: GET_VAR 'this$0: com.example.cuceiai.ResultadoAdapter declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.ResultadoAdapter origin=null
+              CALL 'public open fun setColor (p0: kotlin.Int): kotlin.Unit [fake_override] declared in com.github.mikephil.charting.data.LineDataSet' type=kotlin.Unit origin=EQ
+                $this: GET_VAR 'val dataSet: com.github.mikephil.charting.data.LineDataSet [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.github.mikephil.charting.data.LineDataSet origin=null
+                p0: WHEN type=kotlin.Int origin=IF
+                  BRANCH
+                    if: CALL 'public final fun greater (arg0: kotlin.Int, arg1: kotlin.Int): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=GT
+                      arg0: CALL 'public open fun <get-size> (): kotlin.Int declared in java.util.ArrayList' type=kotlin.Int origin=GET_PROPERTY
+                        $this: GET_VAR 'val entries: java.util.ArrayList<com.github.mikephil.charting.data.Entry> [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=java.util.ArrayList<com.github.mikephil.charting.data.Entry> origin=null
+                      arg1: CONST Int type=kotlin.Int value=1
+                    then: BLOCK type=kotlin.Int origin=null
+                      CALL 'public open fun rgb (p0: kotlin.Int, p1: kotlin.Int, p2: kotlin.Int): kotlin.Int declared in android.graphics.Color' type=kotlin.Int origin=null
+                        p0: CONST Int type=kotlin.Int value=0
+                        p1: CONST Int type=kotlin.Int value=0
+                        p2: CONST Int type=kotlin.Int value=0
+                  BRANCH
+                    if: CONST Boolean type=kotlin.Boolean value=true
+                    then: BLOCK type=kotlin.Int origin=null
+                      CONST Int type=kotlin.Int value=-65536
+              VAR name:prediccionEntry type:com.github.mikephil.charting.components.LegendEntry [val]
+                CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=com.github.mikephil.charting.components.LegendEntry origin=null
+                  <T>: com.github.mikephil.charting.components.LegendEntry
+                  $receiver: CONSTRUCTOR_CALL 'public constructor <init> () declared in com.github.mikephil.charting.components.LegendEntry' type=com.github.mikephil.charting.components.LegendEntry origin=null
+                  block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.components.LegendEntry, kotlin.Unit> origin=LAMBDA
+                    COMPOSITE type=kotlin.Unit origin=null
+                    FUNCTION_REFERENCE 'private final fun onBindViewHolder$lambda$14$lambda$7 (): kotlin.Unit declared in com.example.cuceiai.ResultadoAdapter' type=@[ExtensionFunctionType] kotlin.Function1<com.github.mikephil.charting.components.LegendEntry, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+              VAR name:legendEntries type:kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry> [val]
+                CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry> origin=null
+                  <T>: kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry>
+                  $receiver: CALL 'public final fun mutableListOf <T> (): kotlin.collections.MutableList<T of kotlin.collections.CollectionsKt.mutableListOf> [inline] declared in kotlin.collections.CollectionsKt' type=kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry> origin=null
+                    <T>: com.github.mikephil.charting.components.LegendEntry
+                  block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry>, kotlin.Unit> origin=LAMBDA
+                    COMPOSITE type=kotlin.Unit origin=null
+                    FUNCTION_REFERENCE 'private final fun onBindViewHolder$lambda$14$lambda$10 (): kotlin.Unit declared in com.example.cuceiai.ResultadoAdapter' type=@[ExtensionFunctionType] kotlin.Function1<kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry>, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+              VAR name:lineData type:com.github.mikephil.charting.data.LineData [val]
+                CONSTRUCTOR_CALL 'public constructor <init> (vararg p0: @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?) declared in com.github.mikephil.charting.data.LineData' type=com.github.mikephil.charting.data.LineData origin=null
+                  p0: BLOCK type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?>? origin=null
+                    VAR IR_TEMPORARY_VARIABLE name:tmp0 type:@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?>? [val]
+                      CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?>? origin=null
+                        <T>: @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?
+                        size: CONST Int type=kotlin.Int value=1
+                    CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+                      $this: GET_VAR 'val tmp0: @[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?>? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?>? origin=null
+                      index: CONST Int type=kotlin.Int value=0
+                      value: GET_VAR 'val dataSet: com.github.mikephil.charting.data.LineDataSet [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.github.mikephil.charting.data.LineDataSet origin=null
+                    GET_VAR 'val tmp0: @[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?>? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] @[FlexibleArrayElementVariance] kotlin.Array<out @[FlexibleNullability] com.github.mikephil.charting.interfaces.datasets.ILineDataSet?>? origin=null
+              COMPOSITE type=kotlin.Unit origin=null
+                CALL 'public final fun apply <T> (block: @[ExtensionFunctionType] kotlin.Function1<T of kotlin.StandardKt.apply, kotlin.Unit>): T of kotlin.StandardKt.apply [inline] declared in kotlin.StandardKt' type=@[FlexibleNullability] com.github.mikephil.charting.charts.LineChart? origin=null
+                  <T>: @[FlexibleNullability] com.github.mikephil.charting.charts.LineChart?
+                  $receiver: GET_VAR 'val lineChart: @[FlexibleNullability] com.github.mikephil.charting.charts.LineChart? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] com.github.mikephil.charting.charts.LineChart? origin=null
+                  block: BLOCK type=@[ExtensionFunctionType] kotlin.Function1<@[FlexibleNullability] com.github.mikephil.charting.charts.LineChart?, kotlin.Unit> origin=LAMBDA
+                    COMPOSITE type=kotlin.Unit origin=null
+                    FUNCTION_REFERENCE 'private final fun onBindViewHolder$lambda$14$lambda$13 ($lineData: com.github.mikephil.charting.data.LineData, $lineChart: @[FlexibleNullability] com.github.mikephil.charting.charts.LineChart?, this$0: com.example.cuceiai.ResultadoAdapter, $legendEntries: kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry>): kotlin.Unit declared in com.example.cuceiai.ResultadoAdapter' type=@[ExtensionFunctionType] kotlin.Function1<@[FlexibleNullability] com.github.mikephil.charting.charts.LineChart?, kotlin.Unit> origin=INLINE_LAMBDA reflectionTarget=null
+                      $lineData: GET_VAR 'val lineData: com.github.mikephil.charting.data.LineData [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.github.mikephil.charting.data.LineData origin=null
+                      $lineChart: GET_VAR 'val lineChart: @[FlexibleNullability] com.github.mikephil.charting.charts.LineChart? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] com.github.mikephil.charting.charts.LineChart? origin=null
+                      this$0: GET_VAR 'this$0: com.example.cuceiai.ResultadoAdapter declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.ResultadoAdapter origin=null
+                      $legendEntries: GET_VAR 'val legendEntries: kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry> [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=kotlin.collections.MutableList<com.github.mikephil.charting.components.LegendEntry> origin=null
+                COMPOSITE type=kotlin.Unit origin=null
+              CALL 'public final fun setText (p0: @[FlexibleNullability] kotlin.CharSequence?): kotlin.Unit declared in android.widget.TextView' type=kotlin.Unit origin=EQ
+                $this: GET_VAR 'val tvInfo: @[FlexibleNullability] android.widget.TextView? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.widget.TextView? origin=null
+                p0: STRING_CONCATENATION type=kotlin.String
+                  CALL 'public final fun <get-nombre> (): kotlin.String declared in com.example.cuceiai.Productos' type=kotlin.String origin=GET_PROPERTY
+                    $this: GET_VAR '$producto: com.example.cuceiai.Productos declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.Productos origin=null
+                  CONST String type=kotlin.String value="\nPrecio actual: "
+                  CALL 'public final fun format (vararg args: kotlin.Any?): kotlin.String [inline] declared in kotlin.text.StringsKt' type=kotlin.String origin=null
+                    $receiver: CONST String type=kotlin.String value="%.2f"
+                    args: BLOCK type=kotlin.Array<out kotlin.Any?> origin=null
+                      VAR IR_TEMPORARY_VARIABLE name:tmp0 type:kotlin.Array<out kotlin.Any?> [val]
+                        CALL 'public final fun arrayOfNulls <T> (size: kotlin.Int): kotlin.Array<T of kotlin.arrayOfNulls?> declared in kotlin' type=kotlin.Array<out kotlin.Any?> origin=null
+                          <T>: kotlin.Any?
+                          size: CONST Int type=kotlin.Int value=1
+                      CALL 'public final fun set (index: kotlin.Int, value: T of kotlin.Array): kotlin.Unit [operator] declared in kotlin.Array' type=kotlin.Unit origin=null
+                        $this: GET_VAR 'val tmp0: kotlin.Array<out kotlin.Any?> [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=kotlin.Array<out kotlin.Any?> origin=null
+                        index: CONST Int type=kotlin.Int value=0
+                        value: CALL 'public final fun <get-precio> (): kotlin.Double declared in com.example.cuceiai.Productos' type=kotlin.Double origin=GET_PROPERTY
+                          $this: GET_VAR '$producto: com.example.cuceiai.Productos declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.Productos origin=null
+                      GET_VAR 'val tmp0: kotlin.Array<out kotlin.Any?> [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=kotlin.Array<out kotlin.Any?> origin=null
+              CALL 'public open fun show (): kotlin.Unit [fake_override] declared in android.app.AlertDialog' type=kotlin.Unit origin=null
+                $this: GET_VAR 'val dialog: @[FlexibleNullability] android.app.AlertDialog? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.app.AlertDialog? origin=null
+              VAR name:width type:kotlin.Int [val]
+                CALL 'public open fun toInt (): kotlin.Int declared in kotlin.Double' type=kotlin.Int origin=null
+                  $this: CALL 'public final fun times (other: kotlin.Double): kotlin.Double [operator] declared in kotlin.Int' type=kotlin.Double origin=MUL
+                    $this: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:widthPixels type:kotlin.Int visibility:public declared in android.util.DisplayMetrics' type=kotlin.Int superQualifierSymbol=android.util.DisplayMetrics origin=null
+                      receiver: CALL 'public open fun getDisplayMetrics (): @[FlexibleNullability] android.util.DisplayMetrics? declared in android.content.res.Resources' type=@[FlexibleNullability] android.util.DisplayMetrics? origin=GET_PROPERTY
+                        $this: CALL 'public abstract fun getResources (): @[FlexibleNullability] android.content.res.Resources? declared in android.content.Context' type=@[FlexibleNullability] android.content.res.Resources? origin=GET_PROPERTY
+                          $this: GET_VAR 'val context: @[FlexibleNullability] android.content.Context? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.content.Context? origin=null
+                    other: CONST Double type=kotlin.Double value=0.9
+              VAR name:height type:kotlin.Int [val]
+                CALL 'public open fun toInt (): kotlin.Int declared in kotlin.Double' type=kotlin.Int origin=null
+                  $this: CALL 'public final fun times (other: kotlin.Double): kotlin.Double [operator] declared in kotlin.Int' type=kotlin.Double origin=MUL
+                    $this: GET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:heightPixels type:kotlin.Int visibility:public declared in android.util.DisplayMetrics' type=kotlin.Int superQualifierSymbol=android.util.DisplayMetrics origin=null
+                      receiver: CALL 'public open fun getDisplayMetrics (): @[FlexibleNullability] android.util.DisplayMetrics? declared in android.content.res.Resources' type=@[FlexibleNullability] android.util.DisplayMetrics? origin=GET_PROPERTY
+                        $this: CALL 'public abstract fun getResources (): @[FlexibleNullability] android.content.res.Resources? declared in android.content.Context' type=@[FlexibleNullability] android.content.res.Resources? origin=GET_PROPERTY
+                          $this: GET_VAR 'val context: @[FlexibleNullability] android.content.Context? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.content.Context? origin=null
+                    other: CONST Double type=kotlin.Double value=0.64
+              BLOCK type=kotlin.Unit? origin=FOLDED_SAFE_CALL
+                WHEN type=kotlin.Unit? origin=FOLDED_SAFE_CALL
+                  BRANCH
+                    if: COMPOSITE type=kotlin.Boolean origin=null
+                      VAR IR_TEMPORARY_VARIABLE name:tmp1_safe_receiver type:@[EnhancedNullability] android.view.Window? [val]
+                        CALL 'public open fun getWindow (): @[EnhancedNullability] android.view.Window? [fake_override] declared in android.app.AlertDialog' type=@[EnhancedNullability] android.view.Window? origin=GET_PROPERTY
+                          $this: GET_VAR 'val dialog: @[FlexibleNullability] android.app.AlertDialog? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.app.AlertDialog? origin=null
+                      CALL 'public final fun not (): kotlin.Boolean [operator] declared in kotlin.Boolean' type=kotlin.Boolean origin=null
+                        $this: CALL 'public final fun EQEQ (arg0: kotlin.Any?, arg1: kotlin.Any?): kotlin.Boolean declared in kotlin.internal.ir' type=kotlin.Boolean origin=null
+                          arg0: GET_VAR 'val tmp1_safe_receiver: @[EnhancedNullability] android.view.Window? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[EnhancedNullability] android.view.Window? origin=null
+                          arg1: CONST Null type=kotlin.Nothing? value=null
+                    then: CALL 'public open fun setLayout (p0: kotlin.Int, p1: kotlin.Int): kotlin.Unit declared in android.view.Window' type=kotlin.Unit origin=null
+                      $this: GET_VAR 'val tmp1_safe_receiver: @[EnhancedNullability] android.view.Window? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[EnhancedNullability] android.view.Window? origin=null
+                      p0: GET_VAR 'val width: kotlin.Int [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=kotlin.Int origin=null
+                      p1: GET_VAR 'val height: kotlin.Int [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=kotlin.Int origin=null
+                  BRANCH
+                    if: CONST Boolean type=kotlin.Boolean value=true
+                    then: CONST Null type=kotlin.Nothing? value=null
+          BRANCH
+            if: CONST Boolean type=kotlin.Boolean value=true
+            then: BLOCK type=kotlin.Unit origin=null
+              CALL 'public open fun show (): kotlin.Unit declared in android.widget.Toast' type=kotlin.Unit origin=null
+                $this: CALL 'public open fun makeText (p0: @[FlexibleNullability] android.content.Context?, p1: @[FlexibleNullability] kotlin.CharSequence?, p2: kotlin.Int): @[FlexibleNullability] android.widget.Toast? declared in android.widget.Toast' type=@[FlexibleNullability] android.widget.Toast? origin=null
+                  p0: GET_VAR 'val context: @[FlexibleNullability] android.content.Context? [val] declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=@[FlexibleNullability] android.content.Context? origin=null
+                  p1: STRING_CONCATENATION type=kotlin.String
+                    CONST String type=kotlin.String value="Producto: "
+                    CALL 'public final fun <get-nombre> (): kotlin.String declared in com.example.cuceiai.Productos' type=kotlin.String origin=GET_PROPERTY
+                      $this: GET_VAR '$producto: com.example.cuceiai.Productos declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14' type=com.example.cuceiai.Productos origin=null
+                  p2: CONST Int type=kotlin.Int value=0
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate$default(FunctionCodegen.kt:40)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethodNode(ClassCodegen.kt:406)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generateMethod(ClassCodegen.kt:423)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ClassCodegen.generate(ClassCodegen.kt:168)
+	at org.jetbrains.kotlin.backend.jvm.FileCodegen.lower(JvmPhases.kt:39)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseFactoriesKt.createFilePhase$lambda$4(PhaseFactories.kt:71)
+	at org.jetbrains.kotlin.backend.common.phaser.PhaseBuildersKt$createSimpleNamedCompilerPhase$1.phaseBody(PhaseBuilders.kt:69)
+	at org.jetbrains.kotlin.backend.common.phaser.SimpleNamedCompilerPhase.phaseBody(CompilerPhase.kt:226)
+	at org.jetbrains.kotlin.backend.common.phaser.AbstractNamedCompilerPhase.invoke(CompilerPhase.kt:113)
+	at org.jetbrains.kotlin.backend.common.phaser.PerformByIrFilePhase.invokeSequential(performByIrFile.kt:62)
+	... 44 more
+Caused by: java.lang.RuntimeException: Exception while generating code for:
+FUN INLINE_LAMBDA name:onBindViewHolder$lambda$14$lambda$7 visibility:private modality:FINAL <> ($receiver:com.github.mikephil.charting.components.LegendEntry) returnType:kotlin.Unit
+  $receiver: VALUE_PARAMETER name:$this$apply type:com.github.mikephil.charting.components.LegendEntry
+  BLOCK_BODY
+    VAR name:$i$a$-apply-ResultadoAdapter$onBindViewHolder$1$prediccionEntry$1 type:kotlin.Int [val]
+      CONST Int type=kotlin.Int value=0
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:label type:@[FlexibleNullability] kotlin.String? visibility:public declared in com.github.mikephil.charting.components.LegendEntry' type=kotlin.Unit superQualifierSymbol=com.github.mikephil.charting.components.LegendEntry origin=EQ
+      receiver: GET_VAR '$this$apply: com.github.mikephil.charting.components.LegendEntry declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14$lambda$7' type=com.github.mikephil.charting.components.LegendEntry origin=null
+      value: CONST String type=kotlin.String value="Predicción del próximo mes"
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:form type:@[FlexibleNullability] com.github.mikephil.charting.components.Legend.LegendForm? visibility:public declared in com.github.mikephil.charting.components.LegendEntry' type=kotlin.Unit superQualifierSymbol=com.github.mikephil.charting.components.LegendEntry origin=EQ
+      receiver: GET_VAR '$this$apply: com.github.mikephil.charting.components.LegendEntry declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14$lambda$7' type=com.github.mikephil.charting.components.LegendEntry origin=null
+      value: GET_FIELD 'FIELD FIELD_FOR_ENUM_ENTRY name:SQUARE type:com.github.mikephil.charting.components.Legend.LegendForm visibility:public [final,static] declared in com.github.mikephil.charting.components.Legend.LegendForm' type=com.github.mikephil.charting.components.Legend.LegendForm origin=null
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:formSize type:kotlin.Float visibility:public declared in com.github.mikephil.charting.components.LegendEntry' type=kotlin.Unit superQualifierSymbol=com.github.mikephil.charting.components.LegendEntry origin=EQ
+      receiver: GET_VAR '$this$apply: com.github.mikephil.charting.components.LegendEntry declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14$lambda$7' type=com.github.mikephil.charting.components.LegendEntry origin=null
+      value: CONST Float type=kotlin.Float value=12.0
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:formColor type:kotlin.Int visibility:public declared in com.github.mikephil.charting.components.LegendEntry' type=kotlin.Unit superQualifierSymbol=com.github.mikephil.charting.components.LegendEntry origin=EQ
+      receiver: GET_VAR '$this$apply: com.github.mikephil.charting.components.LegendEntry declared in com.example.cuceiai.ResultadoAdapter.onBindViewHolder$lambda$14$lambda$7' type=com.github.mikephil.charting.components.LegendEntry origin=null
+      value: CONST Int type=kotlin.Int value=-65536
+    SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:textColor type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+      value: CONST Int type=kotlin.Int value=-16777216
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:47)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrSourceCompilerForInline.generateLambdaBody(IrSourceCompilerForInline.kt:67)
+	at org.jetbrains.kotlin.codegen.inline.ExpressionLambda.generateLambdaBody(LambdaInfo.kt:72)
+	at org.jetbrains.kotlin.backend.jvm.codegen.IrInlineCodegen.genValueAndPut(IrInlineCodegen.kt:100)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall$handleParameter(ExpressionCodegen.kt:616)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:644)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitCall(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrCall.accept(IrCall.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:790)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitVariable(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.declarations.IrVariable.accept(IrVariable.kt:36)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:593)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitBlock(IrElementVisitor.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:413)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitWhen(ExpressionCodegen.kt:1101)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitWhen(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrWhen.accept(IrWhen.kt:24)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:593)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitBlock(IrElementVisitor.kt:122)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:413)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlock(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlock.accept(IrBlock.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:593)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitContainerExpression(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitComposite(IrElementVisitor.kt:125)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitComposite(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitComposite(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrComposite.accept(IrComposite.kt:18)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:584)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:240)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:123)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:44)
+	... 54 more
+Caused by: java.lang.AssertionError: access of const val: SET_FIELD 'FIELD IR_EXTERNAL_JAVA_DECLARATION_STUB name:textColor type:kotlin.Int visibility:public [final,static] declared in android.R.attr' type=kotlin.Unit superQualifierSymbol=android.R.attr origin=EQ
+  value: CONST Int type=kotlin.Int value=-16777216
+
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:861)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitFieldAccess(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.visitors.IrElementVisitor$DefaultImpls.visitSetField(IrElementVisitor.kt:206)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:908)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitSetField(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrSetField.accept(IrSetField.kt:21)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitStatementContainer(ExpressionCodegen.kt:579)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:584)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.visitBlockBody(ExpressionCodegen.kt:138)
+	at org.jetbrains.kotlin.ir.expressions.IrBlockBody.accept(IrBlockBody.kt:20)
+	at org.jetbrains.kotlin.backend.jvm.codegen.ExpressionCodegen.generate(ExpressionCodegen.kt:240)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.doGenerate(FunctionCodegen.kt:123)
+	at org.jetbrains.kotlin.backend.jvm.codegen.FunctionCodegen.generate(FunctionCodegen.kt:44)
+	... 95 more
+
+
