@@ -55,7 +55,7 @@ class ResultadoAdapter(private var lista: List<Productos>, var botonActivo: Int)
     override fun onBindViewHolder(holder: ResultadoViewHolder, position: Int) {
         val producto = lista[position]
         holder.texto.text = producto.nombre
-        holder.textoDes.text = "Precio: %.2f".format(producto.precio)
+        holder.textoDes.text = "Precio: %.2f $ - 1 kg".format(producto.precio)
 
         holder.contenedor.setOnClickListener {
             val context = holder.itemView.context

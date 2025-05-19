@@ -21,10 +21,6 @@ import android.util.Log
 import java.util.concurrent.CountDownLatch
 import kotlin.text.toDouble
 
-data class ProductoPrecio(
-    val producto: String,
-    val precio: Double
-)
 
 class MainActivity : AppCompatActivity() {
     private lateinit var button_ini_sesion_principal: Button
@@ -70,99 +66,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        // Tu lista de productos
-        val productos = listOf("Aceite Mixto", "Aguacate Hass", "Arroz largo", "Azúcar Estándar", "Bistec Diezmillo de Res", "Calabacita Italiana", "Carne Molida", "Carne Molida Sirloin 90-10", "Cebolla bola", "Chayote sin espina", "Chile poblano", "Chile serrano", "Frijol Flor de Mayo", "Frijol Negro", "Guayaba", "Harina de Trigo", "Huevo Blanco", "Jitomate Saladette", "Lechuga romana", "Limón con semilla", "Manzana Golden", "Manzana Starking", "Naranja mediana", "Papa alpha", "Papaya maradol", "Pepino", "Piña", "Plátano", "Sandia", "Sandía", "Sirloin 90-10", "Tomate verde", "Zanahoria mediana")
 
-        val db = FirebaseFirestore.getInstance()
-        val meses = listOf( "nov24", "dic24","ene25", "feb25", "mar25", "abr25")
-
-        val listaProximoMes = mutableListOf<ProductoPrecio>()
-
-        // Un CountDownLatch para esperar a que terminen todas las consultas (productos * meses)
-        val latchProductos = CountDownLatch(productos.size)
-
-        for (producto in productos) {
-            val datosPorMes = mutableMapOf<String, Double>()
-            val latchMeses = CountDownLatch(meses.size)
-
-            for (mes in meses) {
-                db.collection("productos")
-                    .document(producto)
-                    .collection(mes)
-                    .document("datos")
-                    .get()
-                    .addOnSuccessListener { document ->
-                        if (document.exists()) {
-                            val precios = document.toObject(PreciosMensuales::class.java)
-                            if (precios != null) {
-                                datosPorMes[mes] = precios.tiendap
-                            }
-                        }
-                        latchMeses.countDown()
-                    }
-                    .addOnFailureListener {
-                        latchMeses.countDown()
-                    }
-            }
-
-            // Esperar que terminen los meses para este producto
-            Thread {
-                latchMeses.await()
-
-                val listaTiendapOrdenada = meses.mapNotNull { mes ->
-                    datosPorMes[mes]?.let { valor -> Pair(mes, valor) }
-                }
-
-                if (listaTiendapOrdenada.isNotEmpty()) {
-                    val listaDoubles = listaTiendapOrdenada.map { it.second }
-
-                    // Aquí pones tu regresión polinomial
-                    val bestDegree = 2 // Por simplicidad, fijo 2
-                    val modelFinal = PolynomialRegression(bestDegree)
-                    modelFinal.fit(listaDoubles)
-                    val nextX = listaDoubles.size + 1.0
-                    val prediction = modelFinal.predict(nextX)
-                    println("lista tienda $listaDoubles")
-
-                    synchronized(listaProximoMes) {
-                        listaProximoMes.add(ProductoPrecio(producto, prediction))
-                    }
-                }
-                latchProductos.countDown()
-            }.start()
-        }
-
-        // Esperar a que terminen todos los productos
-        Thread {
-            latchProductos.await()
-            runOnUiThread {
-                // Ordenar alfabéticamente por nombre del producto
-                val listaOrdenada = listaProximoMes.sortedBy { it.producto }
-
-                // Mostrar lista ordenada
-                println("Lista próxima mes ordenada:")
-                for (item in listaOrdenada) {
-                    println("${item.producto}: ${"%.2f".format(item.precio)}")
-                }
-            }
-        }.start()
 
 
 
 
     }
-
-    // Función para calcular error cuadrático medio (MSE)
-    fun meanSquaredError(yTrue: List<Double>, yPred: List<Double>): Double {
-        var sum = 0.0
-        for (i in yTrue.indices) {
-            sum += (yTrue[i] - yPred[i]) * (yTrue[i] - yPred[i])
-        }
-        return sum / yTrue.size
-    }
-
-
-
 
     private fun setup(){
         button_ini_sesion_google = findViewById(R.id.buttonInicgoogle)
