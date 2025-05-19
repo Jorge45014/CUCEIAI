@@ -21,6 +21,10 @@ import android.util.Log
 import java.util.concurrent.CountDownLatch
 import kotlin.text.toDouble
 
+data class ProductoPrecio(
+    val producto: String,
+    val precio: Double
+)
 
 class MainActivity : AppCompatActivity() {
     private lateinit var button_ini_sesion_principal: Button
@@ -66,68 +70,78 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
+        // Tu lista de productos
+        val productos = listOf("Aceite Mixto", "Aguacate Hass", "Arroz largo", "Azúcar Estándar", "Bistec Diezmillo de Res", "Calabacita Italiana", "Carne Molida", "Carne Molida Sirloin 90-10", "Cebolla bola", "Chayote sin espina", "Chile poblano", "Chile serrano", "Frijol Flor de Mayo", "Frijol Negro", "Guayaba", "Harina de Trigo", "Huevo Blanco", "Jitomate Saladette", "Lechuga romana", "Limón con semilla", "Manzana Golden", "Manzana Starking", "Naranja mediana", "Papa alpha", "Papaya maradol", "Pepino", "Piña", "Plátano", "Sandia", "Sandía", "Sirloin 90-10", "Tomate verde", "Zanahoria mediana")
 
         val db = FirebaseFirestore.getInstance()
         val meses = listOf("ene24", "feb24", "mar24", "abr24", "may24", "jun24", "jul24", "ago24", "sep24", "oct24", "nov24", "dic24")
-        val datosPorMes = mutableMapOf<String, Double>() // Mapa temporal para almacenar mes -> valor
-        val latch = CountDownLatch(meses.size)
 
-        for (mes in meses) {
-            db.collection("productos")
-                .document("Aguacate Hass")
-                .collection(mes)
-                .document("datos")
-                .get()
-                .addOnSuccessListener { document ->
-                    if (document.exists()) {
-                        val precios = document.toObject(PreciosMensuales::class.java)
-                        if (precios != null) {
-                            datosPorMes[mes] = precios.tiendap // Guardar en el mapa
-                            Log.d("FirestoreProducto", "$mes - tiendap: ${precios.tiendap}")
+        val listaProximoMes = mutableListOf<ProductoPrecio>()
+
+        // Un CountDownLatch para esperar a que terminen todas las consultas (productos * meses)
+        val latchProductos = CountDownLatch(productos.size)
+
+        for (producto in productos) {
+            val datosPorMes = mutableMapOf<String, Double>()
+            val latchMeses = CountDownLatch(meses.size)
+
+            for (mes in meses) {
+                db.collection("productos")
+                    .document(producto)
+                    .collection(mes)
+                    .document("datos")
+                    .get()
+                    .addOnSuccessListener { document ->
+                        if (document.exists()) {
+                            val precios = document.toObject(PreciosMensuales::class.java)
+                            if (precios != null) {
+                                datosPorMes[mes] = precios.tiendap
+                            }
                         }
+                        latchMeses.countDown()
                     }
-                    latch.countDown()
-                }
-                .addOnFailureListener { e ->
-                    Log.e("FirestoreProducto", "$mes - Error", e)
-                    latch.countDown()
-                }
-        }
-
-        Thread {
-            latch.await() // Esperar a que todas las consultas terminen
-
-            // Ordenar los datos según el orden de `meses`
-            val listaTiendapOrdenada = meses.mapNotNull { mes ->
-                datosPorMes[mes]?.let { valor ->
-                    Pair(mes, valor)
-                }
+                    .addOnFailureListener {
+                        latchMeses.countDown()
+                    }
             }
 
-            runOnUiThread {
-                println("Datos ordenados por mes: $listaTiendapOrdenada")
+            // Esperar que terminen los meses para este producto
+            Thread {
+                latchMeses.await()
+
+                val listaTiendapOrdenada = meses.mapNotNull { mes ->
+                    datosPorMes[mes]?.let { valor -> Pair(mes, valor) }
+                }
 
                 if (listaTiendapOrdenada.isNotEmpty()) {
                     val listaDoubles = listaTiendapOrdenada.map { it.second }
 
-                    // Ejecutar la regresión polinomial
-                    for (degree in 1..5) {
-                        val model = PolynomialRegression(degree)
-                        model.fit(listaDoubles)
-                        val predictions = listaDoubles.indices.map { x -> model.predict(x + 1.0) }
-                        val error = meanSquaredError(listaDoubles, predictions)
-                        println("Grado $degree, MSE = $error")
-                    }
-
-                    val bestDegree = 2 // O el que tenga menor MSE
+                    // Aquí pones tu regresión polinomial
+                    val bestDegree = 2 // Por simplicidad, fijo 2
                     val modelFinal = PolynomialRegression(bestDegree)
                     modelFinal.fit(listaDoubles)
                     val nextX = listaDoubles.size + 1.0
                     val prediction = modelFinal.predict(nextX)
-                    println("Predicción para x=$nextX: y=$prediction")
-                } else {
-                    println("No hay datos disponibles")
+
+                    synchronized(listaProximoMes) {
+                        listaProximoMes.add(ProductoPrecio(producto, prediction))
+                    }
+                }
+                latchProductos.countDown()
+            }.start()
+        }
+
+        // Esperar a que terminen todos los productos
+        Thread {
+            latchProductos.await()
+            runOnUiThread {
+                // Ordenar alfabéticamente por nombre del producto
+                val listaOrdenada = listaProximoMes.sortedBy { it.producto }
+
+                // Mostrar lista ordenada
+                println("Lista próxima mes ordenada:")
+                for (item in listaOrdenada) {
+                    println("${item.producto}: ${"%.2f".format(item.precio)}")
                 }
             }
         }.start()
